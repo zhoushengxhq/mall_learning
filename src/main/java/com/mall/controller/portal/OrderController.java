@@ -11,7 +11,7 @@ import com.mall.pojo.User;
 import com.mall.service.IOrderService;
 import com.mall.util.CookieUtil;
 import com.mall.util.JsonUtil;
-import com.mall.util.RedisPoolUtil;
+import com.mall.util.RedisShardedPoolUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class OrderController {
         if (StringUtils.isEmpty(loginToken)){
             return ServerResponse.createByErrorMassage("用户未登录，无法获取当前用户信息");
         }
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
         User user = JsonUtil.string2Obj(userJsonStr, User.class);
         if (user == null){
             return ServerResponse.createByErrorCodeMassage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
@@ -54,7 +54,7 @@ public class OrderController {
         if (StringUtils.isEmpty(loginToken)){
             return ServerResponse.createByErrorMassage("用户未登录，无法获取当前用户信息");
         }
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
         User user = JsonUtil.string2Obj(userJsonStr, User.class);
         if (user == null){
             return ServerResponse.createByErrorCodeMassage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
@@ -69,7 +69,7 @@ public class OrderController {
         if (StringUtils.isEmpty(loginToken)){
             return ServerResponse.createByErrorMassage("用户未登录，无法获取当前用户信息");
         }
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
         User user = JsonUtil.string2Obj(userJsonStr, User.class);
         if (user == null){
             return ServerResponse.createByErrorCodeMassage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
@@ -84,7 +84,7 @@ public class OrderController {
         if (StringUtils.isEmpty(loginToken)){
             return ServerResponse.createByErrorMassage("用户未登录，无法获取当前用户信息");
         }
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
         User user = JsonUtil.string2Obj(userJsonStr, User.class);
         if (user == null){
             return ServerResponse.createByErrorCodeMassage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
@@ -100,7 +100,7 @@ public class OrderController {
         if (StringUtils.isEmpty(loginToken)){
             return ServerResponse.createByErrorMassage("用户未登录，无法获取当前用户信息");
         }
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
         User user = JsonUtil.string2Obj(userJsonStr, User.class);
         if (user == null){
             return ServerResponse.createByErrorCodeMassage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
@@ -115,7 +115,7 @@ public class OrderController {
         if (StringUtils.isEmpty(loginToken)){
             return ServerResponse.createByErrorMassage("用户未登录，无法获取当前用户信息");
         }
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
         User user = JsonUtil.string2Obj(userJsonStr, User.class);
         if (user == null){
             return ServerResponse.createByErrorCodeMassage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
@@ -165,7 +165,7 @@ public class OrderController {
         if (StringUtils.isEmpty(loginToken)){
             return ServerResponse.createByErrorMassage("用户未登录，无法获取当前用户信息");
         }
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
         User user = JsonUtil.string2Obj(userJsonStr, User.class);
         if (user == null){
             return ServerResponse.createByErrorCodeMassage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
