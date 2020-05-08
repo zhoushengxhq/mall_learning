@@ -51,6 +51,8 @@ public class AuthorityInterceptor implements HandlerInterceptor {
             //如果拦截到登录请求不打印参数,因为参数里有密码，全部会打印到日志中,防止日志泄漏
             return true;
         }
+        log.info("权限拦截器拦截到请求,className:{},methodName:{},param:{}", className, methodName, requestParamBuffer.toString());
+
         User user = null;
         String loginToken = CookieUtil.readLoginToken(httpServletRequest);
         if (StringUtils.isNotEmpty(loginToken)){
@@ -63,6 +65,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
             httpServletResponse.setCharacterEncoding("UTF-8");//这里要设置编码，否则会乱码
             httpServletResponse.setContentType("application/json;charset=UTF-8");//这里要设置返回值的类型,因为全部是json接口
             PrintWriter out = httpServletResponse.getWriter();
+            //上传由于富文本的控件要求，要特殊处理返回值，这里区分是否登录以及是否有权限
             if (user == null){
                 if (StringUtils.equals(className, "ProductManageController") && StringUtils.equals(methodName, "richtext_img_upload")){
                     Map resultMap = Maps.newHashMap();
